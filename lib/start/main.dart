@@ -87,15 +87,18 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(height: 20),
               Text("A aplicação Pet Walk foi concebida para tomar conta do seu animal de estimação. Fixe objectivos com base nas suas necessidades. Veja os seus progressos e partilhe-os com a comunidade.",style: TextStyle(color: Color(0xFF77787B)), textAlign: TextAlign.left,),
               SizedBox(height: 40),
-              Container(
-                width: double.infinity,
-                margin: EdgeInsets.symmetric(horizontal: 30),
-                padding: EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  color: Color(0xFF6EA8FF),
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
+              InkWell(
+                // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => )),
+                child: Container(
+                  width: double.infinity,
+                  margin: EdgeInsets.symmetric(horizontal: 30),
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Color(0xFF6EA8FF),
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  child: Text("Enviar",textAlign: TextAlign.center,style: TextStyle(fontWeight:FontWeight.bold,),),
                 ),
-                child: Text("Enviar",textAlign: TextAlign.center,style: TextStyle(fontWeight:FontWeight.bold,),),
               )
             ],
           ),
