@@ -63,38 +63,30 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-
       body: SafeArea(
         child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 25),
           width:double.infinity,
           decoration: BoxDecoration(
-            color: Color(0xFFF1F3F6)
+            color: Color(0xFFF1F3F6),
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Column(
-                children: [
-                  SizedBox(height: 15,),
-                  Text('Pet Walk', textAlign: TextAlign.center, style: TextStyle(
-                      color: Color.fromRGBO(117, 172, 255, 1),
-                      fontFamily: 'Rubik',
-                      fontSize: 48,
-                      letterSpacing: 0,
-                      fontWeight: FontWeight.normal,
-                      height: 1
-                  ),),
-                ],
-              ),
-              Image.asset("assets/images/Illustration.png"),
-              Text("Data",style: TextStyle(color: Color(0xFF77787B)),),
+              Text('Pet Walk', textAlign: TextAlign.center, style: TextStyle(
+                  color: Color.fromRGBO(117, 172, 255, 1),
+                  fontFamily: 'Rubik',
+                  fontSize: 48,
+                  letterSpacing: 0,
+                  fontWeight: FontWeight.normal,
+                  height: 1
+              ),),
+              SizedBox(height: 20),
+              Image.network("https://i.imgur.com/rY4PkZR.png"),
+              SizedBox(height: 20),
+              Text("A aplicação Pet Walk foi concebida para tomar conta do seu animal de estimação. Fixe objectivos com base nas suas necessidades. Veja os seus progressos e partilhe-os com a comunidade.",style: TextStyle(color: Color(0xFF77787B)), textAlign: TextAlign.left,),
+              SizedBox(height: 40),
               Container(
                 width: double.infinity,
                 margin: EdgeInsets.symmetric(horizontal: 30),
@@ -103,17 +95,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   color: Color(0xFF6EA8FF),
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                 ),
-                child: Text("Data",textAlign: TextAlign.center,style: TextStyle(fontWeight:FontWeight.bold,),),
+                child: Text("Enviar",textAlign: TextAlign.center,style: TextStyle(fontWeight:FontWeight.bold,),),
               )
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
