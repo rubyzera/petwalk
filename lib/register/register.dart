@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:pet_walk/registerpet/registerpet.dart';
 
+import '../routes.dart';
+
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
 
@@ -73,7 +75,9 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
                 SizedBox(height: 90,),
                 InkWell(
-                  onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterPet())),
+                  onTap: (){
+                    Navigator.of(context).pushNamed(RouteGenerator.registerpet);
+                  },
                   child: Container(
                     width: double.infinity,
                     margin: EdgeInsets.symmetric(horizontal: 30),
