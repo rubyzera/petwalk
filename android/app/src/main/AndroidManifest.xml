@@ -2,6 +2,7 @@
     package="com.example.pet_walk">
    <application
         android:label="pet_walk"
+       android:requestLegacyExternalStorage="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

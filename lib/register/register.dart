@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:pet_walk/registerpet/registerpet.dart';
-
 import '../routes.dart';
+import 'dart:io';
+import 'dart:ui';
+import 'package:camera_camera/camera_camera.dart';
+import 'package:pet_walk/preview_page/preview_page.dart';
+import 'package:pet_walk/anexo/anexo.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:get/get.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -11,6 +16,25 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  File? arquivo;
+  final picker = ImagePicker();
+
+  Future getFileFromGallery() async {
+    PickedFile? file = await picker.getImage(source: ImageSource.gallery);
+
+    if (file != null) {
+      setState(() => arquivo = File(file.path));
+    }
+  }
+
+  showPreview(file) async {
+    File? arq = await Get.to(() => PreviewPage(file: file));
+
+    if (arq != null) {
+      setState(() => arquivo = arq);
+      Get.back();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,6 +64,22 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(height: 40,),
                 Center(child: Image.network('https://i.imgur.com/PQxG0KD.png')),
                 SizedBox(height: 40,),
+                if (arquivo != null) Anexo(arquivo: arquivo!),
+                ElevatedButton.icon(
+                  onPressed: () => Get.to(
+                      () => CameraCamera(onFile: (file) => showPreview(file)),
+                  ),
+                  icon: Icon(Icons.camera_alt),
+                  label: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text('Tire uma foto'),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    elevation: 0.0,
+                    textStyle: TextStyle(
+                      fontSize: 18,
+                    )),
+                ),
                 Text('Nome Completo'),
                 TextField(
                   obscureText: true,
@@ -95,7 +135,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: Colors.blue,
                   ),),
                 ),
-              ],
+          ],
 
             ),
           ),
